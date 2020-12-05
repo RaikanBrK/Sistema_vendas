@@ -13,6 +13,7 @@
 	<script src="https://kit.fontawesome.com/90bfac5e12.js" crossorigin="anonymous"></script>
 
 	<!-- Estilo Css -->
+	<link rel='stylesheet' type='text/css' href='/css/estilo.css'>
 	<?php 
 		if (isset($this->view->css)) {
 			foreach ($this->view->css as $indice => $estilo) {
@@ -38,8 +39,38 @@
 </head>
 <body>
 
+	<header class="content">
+		<nav class="navbar navbar-expand" id="header">
+
+			<a href="/" class="navbar-brand logo-text">Carlos Alexandre</a>
+
+			<button class="navbar-toggler" id="hamburguer" type="button" data-toggle="collapse" data-target="#menu" aria-label="Toggle navigation">
+				<i class="fas fa-bars text-white"></i>
+			</button>
+
+			<div class="collapse navbar-collapse" id="menu">
+				<i class="fas fa-shopping-cart ml-auto" id="icon-shop">
+					<!-- <div id="notification"></div> -->
+				</i>
+
+				<div id="help-div" class="d-none">
+					<div class="box-help">
+						<ul id="list-itens">	
+
+							<div id="group-itens">
+								
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
 	<?= $this->content() ?>
 
+	<script src='/js/script.js'></script>
 	<?php
 		if (isset($this->view->js)) {
 			foreach ($this->view->js as $indice => $script) {

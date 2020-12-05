@@ -1,0 +1,193 @@
+#header {
+	background: #6a2323;
+}
+
+.logo-text {
+	font-family: 'Lobster', cursive;
+	font-size: 1.5em;
+	letter-spacing: 2px;
+	color: white;
+}
+
+.logo-text:hover {
+	color: #dcd4d4;
+}
+
+#menu ul {
+	gap: 10px;
+}
+
+#menu .nav-link {
+	color: #e4d4d4;
+	font-size: 1em;
+	position: relative;
+
+	font-size: 0.9em;
+
+	overflow-x: hidden;
+}
+
+#menu .active .nav-link {
+	color: white;
+}
+
+#menu .nav-link:hover {
+	color: #fff5f5;
+}
+
+#menu .nav-link:hover:before {
+	content: '';
+	display: block;
+	background: #1FBB54;
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 4px;
+	animation: borderLinkHeader 0.35s linear forwards;
+}
+
+#menu .active .nav-link:before {
+	background: #89ad15;
+}
+
+#hamburguer {
+	border: 1px solid #ffffff87;
+	border-radius: 4px;
+}
+
+#hamburguer:focus {
+	outline: none;
+	border: 1px solid #ffffffcc;
+}
+
+@keyframes borderLinkHeader {
+	0% {
+		transform: translateX(-100%);
+	}
+
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+#icon-shop {
+	color: white;
+	cursor: pointer;
+	background: #271616;
+    padding: 10px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    position: relative;
+}
+
+#icon-shop:hover {
+	background: #301d1d;
+}
+
+#notification {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: yellow;
+	border: 1px solid white;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#menu {
+	position: relative;
+}
+
+#help-div {
+	position: absolute;
+	top: 100%;
+	padding-top: 3%;
+
+	right: 0;
+}
+
+#help-div .box-help {
+	width: 350px;
+	padding: 15px 10px;
+	background: #663737;
+}
+
+#list-itens {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#list-itens li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	margin: 7px 0;
+	border-bottom: 1px solid black;
+	padding: 0 4px 2px;
+}
+
+#list-itens li span {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#list-itens li .produto {
+	flex: 1;
+	color: white;
+	font-size: 0.9em;
+}
+
+#list-itens li .preco {
+	color: #6bde11;
+	font-size: 1em;
+}
+
+.btn-more {
+	display: flex;
+	justify-content: center;
+}
+
+#more-item {
+    background: none;
+    border: none;
+    font-size: 0.8em;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 5px 0;
+}
+
+#more-item:hover {
+	text-decoration: none;
+	color: #102000;
+}
+
+.icon-more-down {
+	position: relative;
+	top: -1px;
+}
+
+#total {
+	margin: 20px 0 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.resultTotal {
+	color: #6bde11;
+}
+
+.btn-venda {
+	border-radius: 30px;
+}

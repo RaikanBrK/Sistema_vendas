@@ -5,8 +5,8 @@ use MF\Model\Container;
 
 class IndexController extends Action {
 	public function index() {
-		$this->view->css = [];
-		$this->view->js = [];
+		$this->view->css = ['index'];
+		$this->view->js = ['index'];
 
 		$this->render('index');
 	}
