@@ -8,13 +8,14 @@ class IndexController extends Action {
 		$this->view->css = ['index'];
 		$this->view->js = ['index'];
 
-		$mProdutos = Container::getModel('Produtos');
-		$mFornecedores = Container::getModel('Fornecedores');
+		$this->render('index');
+	}
 
-		$produtos = $mProdutos->getAll();
-
+	public function updateProdutosComFornecedores($produtos) {
 		$produtosUpdate = [];
 		foreach ($produtos as $key => $produto) {
+			$mFornecedores = Container::getModel('Fornecedores');
+
 			$mFornecedores->__set('id', $produto['id']);
 			$fornecedores = $mFornecedores->getAllWithIdProduct();
 			$count = count($fornecedores);
@@ -31,36 +32,23 @@ class IndexController extends Action {
 			$produto['fornecedores'] = $queryFornecedor;
 			$produtosUpdate[] = $produto;
 		}
-
-		$this->view->produtos = $produtosUpdate;
-
-		$this->render('index');
+		return $produtosUpdate;
 	}
 
 	public function get_produtos() {
 		$mProdutos = Container::getModel('Produtos');
-		$mFornecedores = Container::getModel('Fornecedores');
+		
+		$produtos = $mProdutos->getAll();		
+		$produtosUpdate = $this->updateProdutosComFornecedores($produtos);
 
-		$produtos = $mProdutos->getAll();
+		echo json_encode($produtosUpdate);
+	}
 
-		$produtosUpdate = [];
-		foreach ($produtos as $key => $produto) {
-			$mFornecedores->__set('id', $produto['id']);
-			$fornecedores = $mFornecedores->getAllWithIdProduct();
-			$count = count($fornecedores);
-
-			$queryFornecedor = '';
-			foreach ($fornecedores as $key => $fornecedor) {
-
-				$queryFornecedor .= '<span class="fornecedor">'.$fornecedor['nome'].'</span>';
-				if ($key < $count - 1) {
-					$queryFornecedor .= ', ';
-				}
-
-			}
-			$produto['fornecedores'] = $queryFornecedor;
-			$produtosUpdate[] = $produto;
-		}
+	public function get_produto() {
+		$mProdutos = Container::getModel('Produtos');
+		
+		$produtos = $mProdutos->getSearch($_GET['search']);	
+		$produtosUpdate = $this->updateProdutosComFornecedores($produtos);
 
 		echo json_encode($produtosUpdate);
 	}

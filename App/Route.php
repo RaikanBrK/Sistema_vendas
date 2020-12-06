@@ -16,6 +16,12 @@ class Route extends Bootstrap {
 			'action' => 'get_produtos'
 		);
 
+		$routes['get_produto'] = array(
+			'route' => '/get_produto',
+			'controller' => 'indexController',
+			'action' => 'get_produto'
+		);
+
 		$this->setRoutes($routes);
 	}
 }

@@ -18,5 +18,17 @@ class Produtos extends Model {
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
+	public function getSearch($search) {
+		$search = '%'.$search.'%';
+		$query = '
+			SELECT id, nome, preco, referencia FROM produtos WHERE nome LIKE :search || referencia LIKE :search
+		';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':search', $search);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 }
 ?>

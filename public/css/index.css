@@ -1,8 +1,16 @@
-.container-table {
+.container {
 	width: 75%;
 	margin: 40px auto;
 }
 
 .fornecedor {
 	color: #020000;
+}
+
+#search,
+#search:focus {
+	background: #0a1a34;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
 }
