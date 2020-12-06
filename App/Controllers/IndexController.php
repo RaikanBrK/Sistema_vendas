@@ -52,8 +52,5 @@ class IndexController extends Action {
 
 		echo json_encode($produtosUpdate);
 	}
-
-
-	
 }
 ?>

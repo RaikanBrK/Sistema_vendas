@@ -14,3 +14,15 @@
     padding: 20px;
     color: white;
 }
+
+@media (max-width: 767.98px) { 
+	.container {
+		width: 90%;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.container {
+		width: 100%;
+	}
+}

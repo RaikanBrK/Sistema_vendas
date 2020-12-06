@@ -1,10 +1,20 @@
+body {
+	font-size: 70%;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 10
+}
+
 #header {
 	background: #6a2323;
 }
 
 .logo-text {
 	font-family: 'Lobster', cursive;
-	font-size: 1.5em;
+	font-size: 1.5rem;
 	letter-spacing: 2px;
 	color: white;
 }
@@ -19,10 +29,10 @@
 
 #menu .nav-link {
 	color: #e4d4d4;
-	font-size: 1em;
+	font-size: 1rem;
 	position: relative;
 
-	font-size: 0.9em;
+	font-size: 0.9rem;
 
 	overflow-x: hidden;
 }
@@ -59,16 +69,6 @@
 #hamburguer:focus {
 	outline: none;
 	border: 1px solid #ffffffcc;
-}
-
-@keyframes borderLinkHeader {
-	0% {
-		transform: translateX(-100%);
-	}
-
-	100% {
-		transform: translateX(0%);
-	}
 }
 
 #icon-shop {
@@ -142,12 +142,12 @@
 #list-itens li .produto {
 	flex: 1;
 	color: white;
-	font-size: 0.9em;
+	font-size: 0.9rem;
 }
 
 #list-itens li .preco {
 	color: #6bde11;
-	font-size: 1em;
+	font-size: 1rem;
 }
 
 .btn-more {
@@ -158,7 +158,7 @@
 #more-item {
     background: none;
     border: none;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     color: black;
     display: flex;
     justify-content: center;
@@ -190,4 +190,16 @@
 
 .btn-venda {
 	border-radius: 30px;
+}
+
+
+/********************************** Animations **********************************/
+@keyframes borderLinkHeader {
+	0% {
+		transform: translateX(-100%);
+	}
+
+	100% {
+		transform: translateX(0%);
+	}
 }
