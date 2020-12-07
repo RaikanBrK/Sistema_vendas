@@ -1,4 +1,5 @@
 const search = document.querySelector('#search');
+var sessionProdutos = JSON.parse(sessionStorage.getItem('produtos'));
 
 function getProdutos(url) {
 	const ajax = new XMLHttpRequest();
@@ -19,11 +20,11 @@ function getProdutos(url) {
 				var preco = produto.preco.replace('.', ',');
 
 				query += `
-					<tr class="container-tr">
+					<tr class="container-tr" data-id="${produto.referencia}">
 						<th class="referencia" scope="row">${produto.referencia}</th>
 						<td class="nome">${produto.nome}</td>
 						<td class="preco">${preco}</td>
-						<td>${produto.fornecedores}</td>
+						<td class="fornecedores">${produto.fornecedores}</td>
 						<td>
 							<button onclick="add_venda()" type="button" class="btn btn-warning text-white btn-add">Adicionar</button>
 						</td>
@@ -32,6 +33,7 @@ function getProdutos(url) {
 			}
 
 			bodyTable.innerHTML = query;
+			disabledButtons();
 
 		} else if(ajax.readyState == 4 && ajax.status == 404) {
 			console.log('Erro 404');
@@ -55,16 +57,19 @@ function add_venda() {
 	let elemNome = tr.find('.nome');
 	let elemPreco = tr.find('.preco');
 	let elemReferencia = tr.find('.referencia');
+	let elemFornecedores = tr.find('.fornecedores');
+	console.log(elemFornecedores)
 
 	tr.find('.btn-add').prop("disabled", true);
-	let sessionProdutos = JSON.parse(sessionStorage.getItem('produtos'));
+	sessionProdutos = JSON.parse(sessionStorage.getItem('produtos'));
 
 
 	var newProduto = [
 		{
 			nome: elemNome.html(),
 			preco: elemPreco.html(),
-			referencia: elemReferencia.html()
+			referencia: elemReferencia.html(),
+			fornecedores: elemFornecedores.html()
 		}
 	]
 
@@ -89,5 +94,13 @@ function add_venda() {
 		$('#icon-shop').html('<div id="notification"></div>');
 
 		sessionStorage.setItem('produtos', JSON.stringify(produtos));
+	}
+}
+
+function disabledButtons() {
+	for (let key in sessionProdutos) {
+		let produto = sessionProdutos[key];
+
+		$(`[data-id=${produto.referencia}] .btn-add`).prop("disabled", true);
 	}
 }

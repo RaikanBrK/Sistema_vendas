@@ -1,0 +1,49 @@
+<div class="container">
+	<form action="/validando_dados_venda" method="GET" class="box">
+		<div class="form-row">
+			<div class="form-group col-md-7">
+				<label for="data">Data da venda</label>
+				<input type="date" class="form-control" id="data" name="data" required>
+			</div>
+		</div>
+
+		<div class="form-row">
+			
+			<div class="form-group col-md-5">
+				<label for="cep">Cep</label>
+				<input type="text" class="form-control" id="cep" name="cep" placeholder="ex: 00000000" required>
+			</div>
+		</div>
+
+		<div class="form-row mt-5">
+			
+			<div class="form-group col-md-2">
+				<label for="uf">UF</label>
+				<input type="text" class="form-control" id="uf" name="uf" placeholder="ex: SP" required>
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="bairro">Bairro</label>
+				<input type="text" class="form-control" id="bairro" name="bairro" required>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="cidade">Cidade</label>
+				<input type="text" class="form-control" id="cidade" name="cidade" required>
+			</div>
+
+			<div class="form-group col-md-4">
+				<label for="rua">Rua da entrega</label>
+				<input type="text" class="form-control" id="rua" name="rua" required>
+			</div>
+		</div>
+		
+		<div class="d-flex justify-content-end">
+			<a href="/" class="btn btn-outline-info mr-4">Cancelar</a>
+			<button type="submit" class="btn btn-primary">Concluir</button>
+		</div>
+	</form>
+</div>
+
+<?php unset($_SESSION['vendas']) ?>

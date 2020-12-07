@@ -22,6 +22,30 @@ class Route extends Bootstrap {
 			'action' => 'get_produto'
 		);
 
+		$routes['registrar_venda'] = array(
+			'route' => '/registrar_venda',
+			'controller' => 'indexController',
+			'action' => 'registrar_venda'
+		);
+
+		$routes['dados_venda'] = array(
+			'route' => '/dados_venda',
+			'controller' => 'indexController',
+			'action' => 'dados_venda'
+		);
+
+		$routes['validando_dados_venda'] = array(
+			'route' => '/validando_dados_venda',
+			'controller' => 'indexController',
+			'action' => 'validando_dados_venda'
+		);
+
+		$routes['registrar_produto'] = array(
+			'route' => '/registrar_produto',
+			'controller' => 'indexController',
+			'action' => 'registrarProdutosParaVenda'
+		);
+
 		$this->setRoutes($routes);
 	}
 }

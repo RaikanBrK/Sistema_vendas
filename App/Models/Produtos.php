@@ -30,5 +30,16 @@ class Produtos extends Model {
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
+	public function getIdPorReferencia() {
+		$query = '
+			SELECT id, preco FROM produtos WHERE referencia = :referencia
+		';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':referencia', $this->__get('referencia'));
+		$stmt->execute();
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
 }
 ?>

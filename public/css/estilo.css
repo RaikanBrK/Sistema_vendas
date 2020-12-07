@@ -192,6 +192,22 @@ header {
 	border-radius: 30px;
 }
 
+.mensagem {
+	position: fixed;
+    top: 0vh;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 80vw;
+    padding: 15px;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    background: #9f9f46;
+	animation: msgDown 1s linear forwards;
+	z-index: 15;
+	overflow-x: hidden;
+}
+
 
 /********************************** Animations **********************************/
 @keyframes borderLinkHeader {
@@ -201,5 +217,15 @@ header {
 
 	100% {
 		transform: translateX(0%);
+	}
+}
+
+@keyframes msgDown {
+	0% {
+ 		top: 0vh;
+	}
+
+	100% {
+ 		top: 13vh;
 	}
 }

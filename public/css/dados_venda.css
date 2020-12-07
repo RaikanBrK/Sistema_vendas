@@ -1,0 +1,16 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	min-width: 100vw;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.box {
+	box-shadow: 1px 1px 10px #b29b9b;
+	width: 70%;
+	padding: 40px;
+	background: #ded1d6;
+}
