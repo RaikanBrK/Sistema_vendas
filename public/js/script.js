@@ -89,7 +89,7 @@ function calTotal(produtos) {
 		total += parseFloat(preco);
 	}
 
-	total = total.toString().replace('.', ',');
+	total = total.toFixed(2).toString().replace('.', ',');
 
 	const li = document.createElement('li');
 	li.style.border = '0';

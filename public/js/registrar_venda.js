@@ -20,7 +20,7 @@ if (produtos != null) {
 
 		total += parseFloat(preco);
 	}
-	total = total.toString().replace('.', ',');
+	total = total.toFixed(2).toString().replace('.', ',');
 	bodyTable.innerHTML = query;
 }
 
