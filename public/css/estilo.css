@@ -145,7 +145,7 @@ header {
 	font-size: 0.9rem;
 }
 
-#list-itens li .preco {
+li .preco {
 	color: #6bde11;
 	font-size: 1rem;
 }

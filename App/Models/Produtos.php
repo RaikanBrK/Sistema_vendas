@@ -41,5 +41,22 @@ class Produtos extends Model {
 		$stmt->execute();
 		return $stmt->fetch(\PDO::FETCH_ASSOC);
 	}
+
+	public function getProdutoIdVenda($id) {
+		$query = '
+			SELECT 
+				p.id, p.nome, venda.preco
+			FROM 
+				produtos as p 
+			    LEFT JOIN merge_prod_vend as venda ON (p.id = venda.id_produto)
+			WHERE
+				id_venda = :id_venda
+		';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->bindValue(':id_venda', $id);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 }
 ?>

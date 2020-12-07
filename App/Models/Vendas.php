@@ -49,5 +49,33 @@ class Vendas extends Model {
 		$stmt->execute();
 		return $this->db->lastInsertId();
 	}
+
+	public function getAll() {
+		$query = '
+			SELECT id, total, cep, DATE_FORMAT(date_venda, "%d/%m/%Y") as date_venda_f, uf, bairro, cidade, rua FROM vendas ORDER BY date_create DESC
+		';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public function clearMergeVendas() {
+		$query = '
+			DELETE FROM merge_prod_vend
+		';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+	}
+
+	public function clearAllVendas() {
+		$query = '
+			DELETE FROM vendas
+		';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+	}
 }
 ?>

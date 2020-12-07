@@ -46,6 +46,19 @@ class Route extends Bootstrap {
 			'action' => 'registrarProdutosParaVenda'
 		);
 
+		$routes['vendas'] = array(
+			'route' => '/vendas',
+			'controller' => 'indexController',
+			'action' => 'vendas'
+		);
+
+		$routes['clearVendas'] = array(
+			'route' => '/clearVendas',
+			'controller' => 'indexController',
+			'action' => 'clearVendas'
+		);
+
+		// 
 		$this->setRoutes($routes);
 	}
 }

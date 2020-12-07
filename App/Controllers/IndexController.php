@@ -6,11 +6,6 @@ use App\Regras\Venda;
 
 class IndexController extends Action {
 
-	public function msg($msg = 'Venda criada com sucesso.') {
-		echo "<script>const msg = '".$msg."'</script>";
-		echo "<script src='/js/msg.js'></script>";
-	}
-
 	public function index() {
 		$this->view->css = ['index'];
 		$this->view->js = ['index'];
@@ -51,6 +46,11 @@ class IndexController extends Action {
 			$produtosUpdate[] = $produto;
 		}
 		return $produtosUpdate;
+	}
+
+	public function msg($msg = 'Venda criada com sucesso.') {
+		echo "<script>const msg = '".$msg."'</script>";
+		echo "<script src='/js/msg.js'></script>";
 	}
 
 	public function get_produtos() {
@@ -167,6 +167,46 @@ class IndexController extends Action {
 			session_start();
 		}
 		$_SESSION['produtos'] = $_GET;
+	}
+
+	public function vendas() {
+		$this->view->css = ['vendas'];
+		$this->view->js = ['vendas'];
+		$this->view->title = 'Vendas';
+
+		$mVendas = Container::getModel('Vendas');
+		$produtos = Container::getModel('Produtos');
+		$vendasAll = $mVendas->getAll();
+
+		$vendas = [];
+		foreach ($vendasAll as $key => $venda) {
+			$produtosVendas = $produtos->getProdutoIdVenda($venda['id']);
+			$vendas[$key] = $venda;
+			$vendas[$key]['produtos'] = $produtosVendas;
+
+			$max = ['preco' => 0];
+			
+			foreach ($produtosVendas as $indice => $prod) {
+
+				if ($prod['preco'] > $max['preco']) {
+					$max['preco'] = $prod['preco'];
+					$max['nome'] = $prod['nome'];
+				}
+			}
+			$vendas[$key]['max'] = $max;
+		}			
+
+		$this->view->vendas = $vendas;
+		$this->render('vendas');
+	}
+
+	public function clearVendas() {
+		$vendas = Container::getModel('Vendas');
+
+		$vendas->clearMergeVendas();
+		$vendas->clearAllVendas();
+
+		header('location: /');
 	}
 }
 ?>

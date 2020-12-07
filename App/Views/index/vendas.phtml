@@ -1,0 +1,54 @@
+<?php 
+	function formatPreco($preco) {
+		return str_replace('.', ',', $preco);
+	}
+
+?>
+
+<div id="itens">
+	<ul class="itens">
+		<?php foreach ($this->view->vendas as $key => $venda) { ?>
+			<li>
+				<div class="header">
+					<div class="item">
+						<span>
+							<?= $venda['max']['nome'] ?>
+							<?= count($venda['produtos']) > 1 ? ' e mais...' : '' ?>
+						</span>
+						<span><?= $venda['date_venda_f'] ?></span>
+					</div>
+					<i class="fas fa-chevron-down down"></i>
+				</div>
+				<div class="desc">
+					<div class="group-desc">
+						<h3 class="title-desc">Produtos</h3>
+						<ul class="list-produtos mt-3">
+							<?php foreach ($venda['produtos'] as $key => $produto) { ?>
+								<li>
+									<span><?= $produto['nome'] ?></span>
+									<span class="preco">R$ <?= formatPreco($produto['preco']) ?></span>
+								</li>
+							<?php } ?>
+
+							<li class="total">
+								<span>Total</span>
+								<span class="preco">R$ <?= formatPreco($venda['total']) ?></span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="group-desc">
+						<p class="endereco">
+							<?= $venda['cep'] ?>, <?= $venda['uf'] ?>, <?= $venda['cidade'] ?>, <?= $venda['bairro'] ?>, <?= $venda['rua'] ?>
+						</p>
+					</div>
+				</div>
+			</li>
+		<?php } ?>
+	</ul>
+	<?php if(count($this->view->vendas) > 0) { ?>
+		<a href="/clearVendas" class="btn btn-block btn-primary my-4 w-50 mx-auto">Limpar Vendas</a>
+	<?php } else { ?>
+		<p class="not-found-vends">Nenhuma venda concretizada</p>
+	<?php } ?>
+</div>
