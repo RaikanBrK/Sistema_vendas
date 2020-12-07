@@ -12,5 +12,11 @@
 	box-shadow: 1px 1px 10px #b29b9b;
 	width: 70%;
 	padding: 40px;
-	background: #ded1d6;
+	background: #742424;
+    color: white;
+}
+
+.desc-help {
+    font-size: 0.7rem;
+    text-align: right;
 }
