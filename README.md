@@ -14,9 +14,10 @@
  - [x] Sistema de procurar produtos por nome ou referência.
  - [x] Tabela contendo os produtos selecionados.
  - [x] Exibir o valor total da venda dos produtos selecionados.
- - [x] Buscar informações webservice da ViaCEP.
+ - [x] Buscar informações no webservice da ViaCEP.
  - [x] Não cadastrar venda caso não tenha fornecido os dados necessários da entrega e data da venda.
  - [x] Adaptar o banco de dados para receber alterações de preço sem alterar o valor das vendas realizadas.
+ - [x] Usando método AJAX para consultar e retornar dados.
  
  ## Considerações
  Apesar de ser um teste, criei o site para ser apto a mudanças e expansões caso desejadas.
