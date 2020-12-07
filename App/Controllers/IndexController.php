@@ -116,16 +116,14 @@ class IndexController extends Action {
 			$vendas = Container::getModel('Vendas');
 			$produtos = Container::getModel('Produtos');
 
-			$vendas->__set('total', '1000');
+			$vendas->__set('total', $this->getTotal());
 			$vendas->__set('cep', $_GET['cep']);
 			$vendas->__set('date_venda', $_GET['data']);
 			$vendas->__set('uf', $_GET['uf']);
 			$vendas->__set('bairro', $_GET['bairro']);
 			$vendas->__set('cidade', $_GET['cidade']);
 			$vendas->__set('rua', $_GET['rua']);
-			// $id = $vendas->setVenda();
-
-			$id = 11;
+			$id = $vendas->setVenda();
 
 			foreach ($_SESSION['produtos'] as $key => $referencia) {
 				$produtos->__set('referencia', $referencia);
@@ -144,6 +142,24 @@ class IndexController extends Action {
 			$_SESSION['vendas']['error'] = 1;
 			header('location: /dados_venda');
 		}
+	}
+
+	public function getTotal() {
+		if (!isset($_SESSION)) {
+			session_start();
+		}
+
+		$total = 0;
+
+		$produtos = Container::getModel('Produtos');
+
+		foreach ($_SESSION['produtos'] as $key => $referencia) {
+			$produtos->__set('referencia', $referencia);
+			$produto = $produtos->getIdPorReferencia();
+
+			$total += $produto['preco'];
+		}
+		return $total;
 	}
 
 	public function registrarProdutosParaVenda() {

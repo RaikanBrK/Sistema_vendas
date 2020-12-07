@@ -177,13 +177,6 @@ header {
 	top: -1px;
 }
 
-#total {
-	margin: 20px 0 10px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 .resultTotal {
 	color: #6bde11;
 }

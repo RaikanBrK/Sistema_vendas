@@ -58,7 +58,6 @@ function add_venda() {
 	let elemPreco = tr.find('.preco');
 	let elemReferencia = tr.find('.referencia');
 	let elemFornecedores = tr.find('.fornecedores');
-	console.log(elemFornecedores)
 
 	tr.find('.btn-add').prop("disabled", true);
 	sessionProdutos = JSON.parse(sessionStorage.getItem('produtos'));

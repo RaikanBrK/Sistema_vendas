@@ -45,12 +45,13 @@ function showCart() {
 					more++;
 				}
 			}
+			calTotal(produtos);
 
 			if (more != 0) {
 				const btnMore = document.createElement('div');
 				btnMore.classList = 'btn-more';
 				btnMore.innerHTML = `
-					<a href="/registrar_venda" id="more-item">
+					<a href="/registrar_venda" id="more-item" class="order-3">
 						<i class="fas fa-sort-down icon-more-down"></i>
 						Mais ${more}
 					</a>
@@ -76,4 +77,26 @@ function showCart() {
 
 function hideCart() {
 	groupItens.innerHTML = '';
+}
+
+function calTotal(produtos) {
+	var total = 0;
+
+	for (let key in produtos) {
+		const produto = produtos[key];
+		var preco = produto.preco.replace(',', '.');
+
+		total += parseFloat(preco);
+	}
+
+	total = total.toString().replace('.', ',');
+
+	const li = document.createElement('li');
+	li.style.border = '0';
+	li.classList = 'my-3';
+	li.innerHTML = `
+		<span class="produto">Total</span>
+		<span class="preco">R$ ${total}</span>
+	`;
+	groupItens.appendChild(li);
 }

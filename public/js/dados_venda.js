@@ -1,4 +1,6 @@
 const cep = document.querySelector('#cep');
+var total = 0;
+const produtos = JSON.parse(sessionStorage.getItem('produtos'));
 
 cep.addEventListener('keypress', event => {
 	let element = event.target;
@@ -21,6 +23,8 @@ cep.addEventListener('blur', event => {
 	getDadosPorCep(event.target.value);
 })
 
+
+
 function getDadosPorCep(cep) {
 	var url = `https://viacep.com.br/ws/${cep}/json/`;
 
@@ -29,7 +33,6 @@ function getDadosPorCep(cep) {
 		type: 'GET',
 		dataType: 'json',
 		success: dados => {
-			console.log(dados);
 			$('#uf').val(dados.uf);
 			$('#bairro').val(dados.bairro);
 			$('#cidade').val(dados.localidade);
